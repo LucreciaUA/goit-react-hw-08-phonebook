@@ -1,6 +1,6 @@
 import { api } from "./api";
 
-export const setData = async ({newData, token}) => {
+export const setData = async (newData, token) => {
 
     const config = {
         headers: {
