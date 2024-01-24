@@ -1,0 +1,49 @@
+* {
+    font-size: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 22px;
+    margin: 0;
+
+    font-family: 'Allura', cursive;
+}
+
+input {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    padding: 3px 10px 3px 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 15px;
+}
+
+input:focus,
+input:hover {
+    box-shadow: 0 0 50px 15px #82c6eb;
+    outline: none;
+    border: 1px solid #DDDDDD;
+}
+
+.submit {
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    background-color: aliceblue;
+    border-radius: 15px;
+    font-family: 'Allura', cursive;
+}
+
+.submit:hover,
+.submit:focus {
+    box-shadow: 0 0 50px 15px #82c6eb;
+    font-weight: 600;
+}

@@ -1,0 +1,30 @@
+*{
+    font-size: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+h1{
+    font-family: 'Allura', cursive;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+h2{
+    font-family: 'Allura', cursive;
+    font-size: 30px;
+}
+
+.wrapper{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+
