@@ -1,39 +1,47 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import css from './contact-form.module.css'
-import { nanoid } from "nanoid";
+
 import { getContacts } from '../../redux/store/selector';
-import { setContactsThunk } from '../../redux/store/contactsSlicer';
+import { getContactsThunk, setContactsThunk } from '../../redux/store/contactsSlicer';
 
 
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const token = useSelector(state => state.authorisation.token)
+  console.log(token)
+  
 
  const addContacts = (e) => {
     e.preventDefault();
 
     const name = e.target.elements.name.value;
-    const phone = e.target.elements.number.value;
+    const number = e.target.elements.number.value;
 
     // Check for empty fields
-    if (name === '' || phone === '') {
+    if (name === '' || number === '') {
       return; // Exit if name or phone is empty
     }
 
     const newContact = {
-      id: nanoid(),
+      
       name,
-      phone,      
+      number,      
     };
 
+   console.log(newContact)
+   
     const isExisting = contacts.some(contact =>
-      contact.phone === newContact.phone
+      contact.number === newContact.number
     );
         
     if (!isExisting) {
-      dispatch(setContactsThunk(newContact));
+      dispatch(setContactsThunk({newContact, token})).then(() => {
+        // This will be executed after the deletion is complete
+        dispatch(getContactsThunk(token));
+    });
     } else {
       alert(`${newContact.name} is already in your contacts`);
     }

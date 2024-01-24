@@ -24,6 +24,7 @@ export const SignUpPage = () => {
             alert('Now you can log into your account');
             e.currentTarget.reset();
         } else {
+            localStorage.removeItem('authState')
             alert('Something went wrong');
         }
         });

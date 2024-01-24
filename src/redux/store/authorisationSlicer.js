@@ -111,7 +111,8 @@ export const authorisationSlicer = createSlice({
     builder
         .addCase(signupThunk.fulfilled, setState)
         .addCase(loginThunk.fulfilled, setlogState)
-        .addCase(logoutThunk.fulfilled,resetState)
+        .addCase(logoutThunk.fulfilled, resetState)
+        .addCase(loginThunk.rejected, localStorage.removeItem('authState'))
       
 
 

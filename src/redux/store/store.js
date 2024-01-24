@@ -16,6 +16,6 @@ export const store = configureStore({
 
 store.subscribe(() => {
   saveToLocalStorage({
-    authorisation: store.getState().authorisation
+   authorisation: store.getState().authorisation
   });
 });

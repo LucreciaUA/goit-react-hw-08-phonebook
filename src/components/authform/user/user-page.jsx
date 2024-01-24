@@ -17,7 +17,7 @@ export const UserPage = () => {
     const logOutUser = () => {
         
         dispatch(logoutThunk(token)).then(() => {
-            localStorage.clear();
+            
             navigate('/');
         }
         )

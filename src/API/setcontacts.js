@@ -1,8 +1,14 @@
 import { api } from "./api";
 
-export const setData = async (newData) => {
+export const setData = async ({newData, token}) => {
 
-const {data} = await api.post(`/contact`, newData);
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    };
+
+const {data} = await api.post(`/contacts`, newData, config);
     console.log(data)
     return data
     

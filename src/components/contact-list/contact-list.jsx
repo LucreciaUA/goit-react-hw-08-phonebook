@@ -13,7 +13,7 @@ export const ContactList = () => {
     const isLoading = useSelector(state => state.contacts.isLoading);
     const error = useSelector(state => state.contacts.error);
     const token = useSelector(state => state.authorisation.token)
-    console.log(token)
+  
     useEffect(() => {
         if(token!==''){
             dispatch(getContactsThunk(token));
@@ -32,7 +32,7 @@ export const ContactList = () => {
         dispatch(deleteContactThunk(id)
         ).then(() => {
         // This will be executed after the deletion is complete
-        dispatch(getContactsThunk());
+        dispatch(getContactsThunk(token));
     })
         
     }
