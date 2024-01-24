@@ -42,6 +42,27 @@ export const logoutThunk = createAsyncThunk(
   }
 )
 
+export const saveToLocalStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('authState', serializedState);
+  } catch (e) {
+    console.warn(e);
+  }
+};
+
+// Load state from local storage
+export const loadFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('authState');
+    if (serializedState === null) return undefined;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.warn(e);
+    return undefined;
+  }
+};
+
 const handleFulfilled = (state) => {
   state.isLoading = false;
 }
@@ -67,14 +88,14 @@ const setlogState = (state, action) => {
     state.user.email = action.payload.user.email;
     state.token = action.payload.token;
     state.isLoggedIn = true;
-    localStorage.setItem('token', action.payload.token);
+    saveToLocalStorage(state);
 }
 
 const resetState = (state) => {
     state.user = { name: '', email: '' };
     state.token = '';
     state.isLoggedIn = false;
-    localStorage.clear()
+    localStorage.removeItem('authState'); 
 };
 
 

@@ -21,7 +21,7 @@ export const ContactList = () => {
         else {
             return
         }
-    }, [dispatch]);
+    }, [dispatch, token]);
 
     const filteredContacts = contacts?.filter(contact =>
     contact.name.toLowerCase().includes(search.toLowerCase())

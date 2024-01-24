@@ -13,11 +13,13 @@ export const UserPage = () => {
         if (token === '') {
             navigate('/')
         }
-    },[])
+    })
     const logOutUser = () => {
         
-        dispatch(logoutThunk(token)).then(
-            navigate('/')
+        dispatch(logoutThunk(token)).then(() => {
+            localStorage.clear();
+            navigate('/');
+        }
         )
     }
     return (
