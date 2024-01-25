@@ -35,7 +35,8 @@ export const logoutThunk = createAsyncThunk(
   `authorisation/logout`,
   async (token, { rejectWithValue }) => {
     try{
-    const data = await logout(token)
+      const data = await logout(token)
+      setAuthorizationToken('')
       return data
     }
     catch(error) {
@@ -148,7 +149,9 @@ export const authorisationSlicer = createSlice({
         .addCase(logoutThunk.fulfilled, resetState)
       //.addCase(loginThunk.rejected, localStorage.removeItem('authState'))
       .addCase(verifyUserThunk.fulfilled, setVerifyState)
-      //.addCase(verifyUserThunk.rejected, localStorage.clear())
+      .addCase(verifyUserThunk.rejected, ((action, playload)=>{
+      localStorage.clear()
+      }))
       
 
 
