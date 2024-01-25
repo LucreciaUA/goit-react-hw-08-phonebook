@@ -1,0 +1,78 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+    margin: 0;
+    gap: 10px;
+    border-bottom: 4px solid;
+        border-image: linear-gradient(to right, rgb(0, 48, 131), rgb(255, 255, 255)) 1;
+        width: 100%;
+    
+}
+
+.navigation{
+    display: flex;
+    gap: 5px;
+}
+
+.navbuttons{
+    padding: 5px 10px;
+        border: 1px solid #DDDDDD;
+        background-color: rgb(231, 242, 251);
+        border-radius: 15px;
+    
+        
+}
+
+.navbuttons:hover,
+.navbuttons:focus {
+    box-shadow: 0 0 50px 15px #82c6eb;
+    font-weight: 600;
+}
+
+.text{
+    color: black;
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+        font-size: 20px;
+}
+
+.login{
+    background-color: rgb(17, 103, 178);
+    
+}
+
+.login:hover,
+.login:focus {
+    box-shadow: 0 0 50px 15px rgb(11, 84, 148);
+    font-weight: 600;
+}
+.textlogin{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+        font-size: 20px;
+}
+
+.logo{
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 0;
+    line-height: 0;
+    color: rgb(17, 103, 178);
+    text-align: center;
+}
+
+.logoimg{
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+
+}
+
+
+

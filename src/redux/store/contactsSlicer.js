@@ -7,9 +7,9 @@ import { deleteContact } from 'API/deletecontact';
 
 export const getContactsThunk = createAsyncThunk(
   `contacts/getContacts`,
-  async (token, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try{
-    const data = await getData(token)
+    const data = await getData()
       return data
     }
     catch(error) {
@@ -20,9 +20,9 @@ export const getContactsThunk = createAsyncThunk(
 
 export const setContactsThunk = createAsyncThunk(
   `contacts/setContacts`,
-  async ({newContact, token}, { rejectWithValue }) => {
+  async (newContact, { rejectWithValue }) => {
     try{
-    const data = await setData({newContact, token})
+    const data = await setData(newContact)
       return data
     }
     catch(error) {
@@ -33,9 +33,9 @@ export const setContactsThunk = createAsyncThunk(
 
 export const deleteContactThunk = createAsyncThunk(
   `contacts/deleteContact`,
-  async ({id, token}, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try{
-    const data = await deleteContact({id, token})
+    const data = await deleteContact(id)
       return data
     }
     catch(error) {

@@ -1,14 +1,10 @@
 import { api } from "./api";
 
-export const getData = async (token) => {
+export const getData = async () => {
 
-     const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    };
 
-const {data} = await api.get(`/contacts`, config);
+
+const {data} = await api.get(`/contacts`);
     console.log(data)
     return data
     

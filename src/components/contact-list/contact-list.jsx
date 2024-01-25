@@ -12,16 +12,19 @@ export const ContactList = () => {
     const search = useSelector(getSearch);
     const isLoading = useSelector(state => state.contacts.isLoading);
     const error = useSelector(state => state.contacts.error);
-    const token = useSelector(state => state.authorisation.token)
+    const isLoggedIn = useSelector(state => state.authorisation.isLoggedIn)
   
     useEffect(() => {
-        if(token!==''){
-            dispatch(getContactsThunk(token));
+        if(isLoggedIn){
+            dispatch(getContactsThunk());
         }
-        else {
-            return
-        }
-    }, [dispatch, token]);
+     
+    }, [dispatch, isLoggedIn]);
+
+    if (!isLoggedIn) {
+        return <p>Please log in to view contacts.</p>;
+    }
+
 
     const filteredContacts = contacts?.filter(contact =>
     contact.name.toLowerCase().includes(search.toLowerCase())
@@ -32,7 +35,7 @@ export const ContactList = () => {
         dispatch(deleteContactThunk(id)
         ).then(() => {
         // This will be executed after the deletion is complete
-        dispatch(getContactsThunk(token));
+        dispatch(getContactsThunk());
     })
         
     }
@@ -49,10 +52,10 @@ if (isLoading) {
         <ul>
                         {filteredContacts.length > 0 ? (
                             filteredContacts.map((contact) => {
-                                const { name, phone } = contact;
+                                const { name, number } = contact;
                                 return (
                                     <li key={nanoid()}>
-                                        <div className={css.wrap}><span className={css.name}>{name}</span><span> {phone}</span></div>
+                                        <div className={css.wrap}><span className={css.name}>{name}</span><span> {number}</span></div>
                                          
         
                                     <button type="button" className={css.delete} onClick={() => delContact(contact.id)}>

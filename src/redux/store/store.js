@@ -1,21 +1,43 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { contactsReducer } from './contactsSlicer';
 import { searchReducer } from './searchSlicer';
-import { authorisationReducer, loadFromLocalStorage, saveToLocalStorage } from './authorisationSlicer';
+import { authorisationReducer} from './authorisationSlicer';
 
-const persistedState = loadFromLocalStorage();
+
+
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const authorisationPersistConfig = {
+  key: 'authorisation',
+  storage,
+  whitelist: ['token'],
+};
+
 
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     filter: searchReducer,
-    authorisation: authorisationReducer,
+    authorisation: persistReducer(authorisationPersistConfig ,authorisationReducer),
   },
-  preloadedState: persistedState
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+  devTools: process.env.NODE_ENV === 'development',
 });
 
-store.subscribe(() => {
-  saveToLocalStorage({
-   authorisation: store.getState().authorisation
-  });
-});
+
+export const persistor = persistStore(store);

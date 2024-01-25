@@ -11,7 +11,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const token = useSelector(state => state.authorisation.token)
-  console.log(token)
+ 
   
 
  const addContacts = (e) => {
@@ -38,9 +38,9 @@ export const ContactForm = () => {
     );
         
     if (!isExisting) {
-      dispatch(setContactsThunk({newContact, token})).then(() => {
+      dispatch(setContactsThunk(newContact)).then(() => {
         // This will be executed after the deletion is complete
-        dispatch(getContactsThunk(token));
+        dispatch(getContactsThunk());
     });
     } else {
       alert(`${newContact.name} is already in your contacts`);
@@ -50,9 +50,9 @@ export const ContactForm = () => {
   };
   
         return (<form onSubmit={addContacts}>
-                <label htmlFor="name">Name</label><br />
+                <label htmlFor="name">Name</label>
                     <input type="text" className={css.input} name="name" id="name" required/><br />
-                <label htmlFor="number">Phone</label><br />
+                <label htmlFor="number">Phone</label>
                     <input type="tel" name="number" id="number" required /><br />
                 <button type="submit" className={css.submit}>Add contact</button>
                 </form>)

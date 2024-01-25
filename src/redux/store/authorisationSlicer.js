@@ -88,14 +88,14 @@ const setlogState = (state, action) => {
     state.user.email = action.payload.user.email;
     state.token = action.payload.token;
     state.isLoggedIn = true;
-    saveToLocalStorage(state);
+    
 }
 
 const resetState = (state) => {
     state.user = { name: '', email: '' };
     state.token = '';
     state.isLoggedIn = false;
-    localStorage.removeItem('authState'); 
+    //localStorage.removeItem('authState'); 
 };
 
 

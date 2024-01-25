@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk} from '../../../redux/store/authorisationSlicer';
 import { useNavigate } from "react-router-dom";
+import css from './login-page.module.css'
  
 export const LoginPage = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const LoginPage = () => {
         dispatch(loginThunk(user))
         .then((response) => {
         if (response.type.endsWith('fulfilled')) {
-            alert(`Welcome, ${username}`);
+            alert(`Welcome ${username}!`);
             navigate('/');
         } else {
             alert('Something went wrong');
@@ -31,15 +32,16 @@ export const LoginPage = () => {
     }
 
     return (
-        <div>
+        <div className={css.wrap}>
             <h1>Welcome, user!</h1>
             <form action="" onSubmit={logUser}>
 
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" />
+                
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" />
-                <button type="submit">Submit</button>
+                <button type="submit" className={css.submit}>Submit</button>
             </form>
         </div>
     )

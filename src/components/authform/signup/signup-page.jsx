@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { signupThunk } from '../../../redux/store/authorisationSlicer';
+import css from './signup-page.module.css'
  
 export const SignUpPage = () => {
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export const SignUpPage = () => {
     }
 
     return (
-        <div>
+        <div className={css.wrap}>
             <h1>Welcome, new user!</h1>
             <form action="" onSubmit={addUser}>
                 <label htmlFor="name">Name</label>
@@ -41,7 +42,7 @@ export const SignUpPage = () => {
                 <input type="email" name="email" id="email" />
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" />
-                <button type="submit">Submit</button>
+                <button type="submit" className={css.submit}>Submit</button>
             </form>
         </div>
     )

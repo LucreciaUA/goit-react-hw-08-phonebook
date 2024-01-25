@@ -1,14 +1,9 @@
 import { api } from "./api";
 
-export const deleteContact = async (id, token) => {
+export const deleteContact = async (id) => {
 
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    };
 
-const {data} = await api.delete(`/contacts/${id}`, config);
+const {data} = await api.delete(`/contacts/${id}`);
     console.log(data)
     return data
     
