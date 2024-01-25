@@ -18,6 +18,9 @@ export const ContactList = () => {
         if(isLoggedIn){
             dispatch(getContactsThunk());
         }
+        else {
+            return
+        }
      
     }, [dispatch, isLoggedIn]);
 
