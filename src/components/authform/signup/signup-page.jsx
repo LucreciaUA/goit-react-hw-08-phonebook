@@ -35,7 +35,7 @@ export const SignUpPage = () => {
     return (
         <div className={css.wrap}>
             <h1>Welcome, new user!</h1>
-            <form action="" onSubmit={addUser}>
+            <form action="" onSubmit={addUser} className={css.form}>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name"/>
                 <label htmlFor="email">Email</label>

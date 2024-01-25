@@ -49,7 +49,7 @@ export const ContactForm = () => {
     e.currentTarget.reset();
   };
   
-        return (<form onSubmit={addContacts}>
+        return (<form onSubmit={addContacts} className={css.form}>
                 <label htmlFor="name">Name</label>
                     <input type="text" className={css.input} name="name" id="name" required/><br />
                 <label htmlFor="number">Phone</label>

@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&display=swap');;
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;

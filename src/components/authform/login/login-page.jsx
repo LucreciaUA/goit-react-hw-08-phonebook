@@ -34,7 +34,7 @@ export const LoginPage = () => {
     return (
         <div className={css.wrap}>
             <h1>Welcome, user!</h1>
-            <form action="" onSubmit={logUser}>
+            <form action="" onSubmit={logUser} className={css.form}>
 
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" />
