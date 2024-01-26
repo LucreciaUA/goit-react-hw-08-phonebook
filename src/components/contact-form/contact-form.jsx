@@ -34,7 +34,7 @@ export const ContactForm = () => {
    console.log(newContact)
    
     const isExisting = contacts.some(contact =>
-      contact.number === newContact.number
+      contact.name.toLowerCase() === newContact.name.toLowerCase() || contact.number === newContact.number
     );
         
     if (!isExisting) {
