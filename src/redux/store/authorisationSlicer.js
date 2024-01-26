@@ -149,7 +149,7 @@ export const authorisationSlicer = createSlice({
         .addCase(logoutThunk.fulfilled, resetState)
       //.addCase(loginThunk.rejected, localStorage.removeItem('authState'))
       .addCase(verifyUserThunk.fulfilled, setVerifyState)
-      //.addCase(verifyUserThunk.rejected, ((action, playload)=>{localStorage.clear()}))
+      .addCase(verifyUserThunk.rejected, ((action, playload)=>{localStorage.clear()}))
       
 
 
